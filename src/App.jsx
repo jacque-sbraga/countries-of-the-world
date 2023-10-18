@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
 import Router from './Router';
 import light from './themes/light';
 import dark from './themes/dark';
@@ -8,17 +10,13 @@ import Container from './components/Container';
 import Header from './components/Header';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const validateTheme = theme === 'dark';
+  const darkMode = useSelector((state) => state.reducer.darkMode);
 
-  const themeToggle = () => {
-    return theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
   return (
     <BrowserRouter>
-      <ThemeProvider theme={validateTheme ? dark : light}>
+      <ThemeProvider theme={darkMode ? dark : light}>
         <Container>
-          <Header themeToggle={themeToggle} isDark={validateTheme} />
+          <Header />
           <Router />
         </Container>
       </ThemeProvider>
