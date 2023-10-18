@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
