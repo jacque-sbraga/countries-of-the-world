@@ -2,7 +2,9 @@ import * as types from './types';
 
 const initialState = {
   darkMode: false,
-  data: null,
+  data: [],
+  filteredList: [],
+  message: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -11,6 +13,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         darkMode: !state.darkMode,
+      };
+
+    case types.FILTERED_LIST:
+      return {
+        ...state,
+        filteredList: action.result,
       };
 
     case types.FETCH_DATA_REQUEST:
@@ -29,6 +37,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         data: action.payload,
+      };
+
+    case types.ERROR_API:
+      return {
+        ...state,
+        message: action.message,
       };
 
     default:

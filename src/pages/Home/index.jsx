@@ -1,63 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContries } from '../../services/axios';
 import CardList from '../../components/CardList';
 import HomeComponent from './style';
 import SearchBar from '../../components/SearchBar';
-import { mapData, sortData, filteredCountries } from '../../utils/utils';
+import { mapData, sortData } from '../../utils/utils';
+import { requestSuccess, errorApi } from '../../store/modules/actions';
 import PageError from '../PageError';
 
 export default function Home() {
-  const [countryList, setCountryList] = useState([]);
-  const [filteredCountryList, setFilteredCountryList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [apiError, setApiError] = useState('');
-  const isFilteredListEmpty = filteredCountryList.length === 0;
+  const apiErrorMessage = useSelector((state) => state.reducer.message);
 
-  const handleSelectedRegion = (value) => {
-    setSelectedRegion(value);
-  };
-
-  const handleSearch = (value) => {
-    setSearchTerm(value);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getAllContries() {
       try {
         const response = await fetchContries();
         const mappedAndSortedData = mapData(sortData(response));
-        setCountryList(mappedAndSortedData);
+        dispatch(requestSuccess(mappedAndSortedData));
       } catch (error) {
-        setApiError(error);
+        dispatch(errorApi(error));
       }
     }
     getAllContries();
-  }, []);
-
-  useEffect(() => {
-    const filteredList = filteredCountries(countryList, searchTerm, selectedRegion);
-    setFilteredCountryList(filteredList);
-
-    if (searchTerm !== '' && filteredList.length === 0) {
-      return setApiError('Sorry, the country was not found.');
-    }
-    return setApiError('');
-  }, [searchTerm, selectedRegion, countryList]);
+  }, [dispatch]);
 
   return (
     <HomeComponent>
-      <SearchBar
-        handleSelectedRegion={handleSelectedRegion}
-        searchTerm={searchTerm}
-        handleSearch={handleSearch}
-      />
+      <SearchBar />
 
-      {apiError ? (
-        <PageError message={apiError} />
-      ) : (
-        <CardList info={isFilteredListEmpty ? countryList : filteredCountryList} />
-      )}
+      {apiErrorMessage ? <PageError message={apiErrorMessage} /> : <CardList />}
     </HomeComponent>
   );
 }

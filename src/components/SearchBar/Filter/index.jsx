@@ -13,11 +13,13 @@ export default function Filter({ handleSelectedRegion }) {
   };
 
   const handleRegion = ({ target }) => {
-    const region = target.textContent.toLowerCase();
+    if (target.tagName === 'LI') {
+      const region = target.textContent.toLowerCase();
 
-    setSelectedRegion(region);
-    handleSelectedRegion(region);
-    setIsFilterVisible(!isFilterVisible);
+      setSelectedRegion(region);
+      handleSelectedRegion(region);
+      setIsFilterVisible(!isFilterVisible);
+    }
   };
   return (
     <div>

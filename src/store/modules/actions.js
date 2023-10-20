@@ -6,9 +6,24 @@ export function switchTheme() {
   };
 }
 
-export function requestSuccess() {
+export function filterList(data) {
+  return {
+    type: types.FILTERED_LIST,
+    result: data,
+  };
+}
+
+export function requestSuccess(data) {
   return {
     type: types.FETCH_DATA_SUCCESS,
+    payload: data,
+  };
+}
+
+export function errorApi(data) {
+  return {
+    type: types.ERROR_API,
+    message: data,
   };
 }
 
