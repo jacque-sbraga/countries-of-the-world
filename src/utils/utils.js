@@ -13,22 +13,32 @@ export const sortData = (array) => {
   return clonedArray;
 };
 
-export const getCountryCurrency = (currencies) => {
+export const joinCurrencyArrayToString = (currencies) => {
   const keys = Object.keys(currencies);
   const currenciesList = keys.map((item) => {
     return currencies[item].name;
   });
 
-  const currenciesString = currenciesList.join(' ,');
+  const currenciesString = currenciesList.join(', ');
 
   return currenciesString;
+};
+
+export const joinLanguagesObjectToString = (languages) => Object.values(languages).join(', ');
+
+export const findBordersCountry = (data, borders) => {
+  if (borders === undefined) return [];
+
+  return data.filter((item) => {
+    return borders.includes(item.id);
+  });
 };
 
 export const mapData = (array) =>
   array.map((item) => ({
     name: item.name.common,
     languages: item.languages,
-    id: item.cca2,
+    id: item.cca3,
     population: item.population,
     region: item.region,
     subRegion: item.subregion,
@@ -36,7 +46,7 @@ export const mapData = (array) =>
     currencies: item.currencies,
     borders: item.borders,
     capital: item.capital,
-    flag: item.flags.png,
+    flags: item.flags,
   }));
 
 export function filteredCountries(countries, searchTerm, selectedRegion) {

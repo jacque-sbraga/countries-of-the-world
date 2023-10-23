@@ -9,7 +9,7 @@ export default function Card({ country }) {
     <CardItem>
       <Link to={`country/${country.id}`}>
         <div>
-          <img src={country.flag} alt='' />
+          <img src={country.flags.png} alt='' />
         </div>
         <Info>
           <h3>{country.name}</h3>
