@@ -67,7 +67,7 @@ Users should be able to:
 
 - Solution URL: [jacque-sbraga/countries-of-the-world (github.com)](https://github.com/jacque-sbraga/countries-of-the-world)
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Countries of the world](https://main--wonderful-blancmange-1379eb.netlify.app/)
 
 
 
