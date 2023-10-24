@@ -24,7 +24,7 @@ const CardItem = styled.li`
 
 const Info = styled.div`
   padding: 1.5rem;
-  h3 {
+  h2 {
     font-size: var(--fz-300);
     margin-bottom: 1rem;
   }

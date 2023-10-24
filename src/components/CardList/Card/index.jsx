@@ -12,7 +12,7 @@ export default function Card({ country }) {
           <img src={country.flags.png} alt='' />
         </div>
         <Info>
-          <h3>{country.name}</h3>
+          <h2>{country.name}</h2>
           <p>
             <span>Population: </span>
             {population}
