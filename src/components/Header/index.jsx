@@ -20,7 +20,7 @@ export default function Header() {
       </Link>
 
       <label htmlFor='set-theme'>
-        <input type='checkbox' title='Switch theme' onChange={handleClick} />
+        <input type='checkbox' title='Switch theme' onChange={handleClick} id='set-theme' />
         {darkMode ? <Sun size={18} weight='fill' /> : <Moon size={18} />}
         Dark Mode
       </label>

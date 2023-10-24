@@ -33,7 +33,7 @@ export default function SearchBar() {
 
   return (
     <SearchBarComponent>
-      <Form action=''>
+      <Form action='#'>
         <span>
           <MagnifyingGlass size={20} />
         </span>

@@ -29,7 +29,7 @@ export default function Filter({ handleSelectedRegion }) {
           <CaretDown size={20} />
         </span>
       </FilterComponent>
-      <FilterSelect showfilter={isFilterVisible ? 'initial' : 'none'}>
+      <FilterSelect data-showfilter={isFilterVisible ? 'initial' : 'none'}>
         <ul onClick={handleRegion}>
           <li>All</li>
           <li>Africa</li>

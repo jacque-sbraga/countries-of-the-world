@@ -17,7 +17,7 @@ const FilterComponent = styled.div`
 `;
 
 const FilterSelect = styled.div`
-  display: ${(props) => props.showfilter};
+  display: ${(props) => props['data-showfilter']};
   width: 200px;
   background-color: ${(props) => props.theme.colors.elements};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
