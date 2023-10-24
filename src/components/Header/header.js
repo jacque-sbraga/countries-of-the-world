@@ -19,7 +19,7 @@ const HeaderComponent = styled.header`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: ${(props) => props.theme.colors.elements};
   ${mobileHeaderQuery}
-  h2 {
+  h1 {
     font-weight: var(--fw-bold);
     font-size: inherit;
     transition: all 0.1s ease-in;
