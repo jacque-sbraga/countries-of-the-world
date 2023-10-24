@@ -17,12 +17,20 @@ const QueryCountryImage = css`
   @media (max-width: 1024px) {
     width: 80%;
   }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const QueryCountryDetails = css`
   @media (max-width: 1024px) {
     width: 80%;
     padding: 3rem 0 0 0;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 
